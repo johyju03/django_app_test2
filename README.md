@@ -4,7 +4,7 @@ DRF(Django Rest Framework) 및 Class 기반의 View를 적용시킨 테스트 �
 - DRF(Django Rest Framework)
 1. djangorestframework 플러그인설치
 2. settings.py 내에 INSTALLED_APP 에 추가
-'''python
+```python
 # 리스트 항목 조회
 class ProductListAPI(generics.GenericAPIView, mixins.ListModelMixin):
     serializer_class = ProductSerializer
@@ -14,7 +14,6 @@ class ProductListAPI(generics.GenericAPIView, mixins.ListModelMixin):
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
-
 
 # 단일 항목 조회
 # mixins.RetrieveModelMixin 함수 사용 후, get 함수 사용시, 상세보기를 지원
@@ -26,9 +25,9 @@ class ProductDetailAPI(generics.GenericAPIView, mixins.RetrieveModelMixin):
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
-'''
+```
 - Class 기반 View (ex. 로그인 View)
-'''python
+```python
 class LoginView(FormView):
     template_name = 'login.html'
     form_class = LoginForm
@@ -44,4 +43,4 @@ def logout(request):
     if 'user' in request.session:
         del (request.session['user'])
     return redirect('/')
-'''
+```
